@@ -1,7 +1,54 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: ModernNegraDemo;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../public/fonts/Modern Negra Demo.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: MonaSans;
+  src: url('../public/fonts/MonaSans-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: MonaSans;
+  src: url('../public/fonts/MonaSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: MonaSans;
+  src: url('../public/fonts/MonaSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: MonaSans;
+  src: url('../public/fonts/MonaSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: MonaSans;
+  src: url('../public/fonts/MonaSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
+  --background: #000;
   --foreground: #171717;
 }
 
@@ -10,6 +57,12 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-negra: ModernNegraDemo;
+  --font-mona-sans: MonaSans
+}
+
+@theme {
+  --font-negra: ModernNegraDemo
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +76,66 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.mask-fade-circle {
+  /* -webkit-mask-image: radial-gradient(ellipse , rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 100%); */
+  /* mask-image: radial-gradient(ellipse , rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 1) 100%); */
+  -webkit-mask-image: radial-gradient(ellipse, black 0%, transparent 80%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse, black 0%, transparent 80%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  /* -webkit-mask-size: cover;
+  mask-size: cover; */
+}
+
+.glow-circle {
+  background: radial-gradient(ellipse , rgba(255, 255, 255, 0.1) 0%, transparent 50%,  transparent 100%)
+}
+
+.noisy {
+  @apply absolute inset-0 size-full bg-[url("/images/noise.png")];
+}
+
+.gsap-marker-start,
+.gsap-marker-end,
+.gsap-marker-scroller-start,
+.gsap-marker-scroller-end {
+  z-index: 999999 !important;
+  display: block !important;
+  opacity: 1 !important;
+}
+
+
+#hero-title,
+#hero-title div {
+  /* your noise + gradient fill */
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(255,255,255,1) 0%,
+      rgba(255,255,255,1) 20%,
+      rgba(214,214,214,0.38) 40%,
+      transparent 50%,
+      transparent 100%
+    ),
+    linear-gradient(to bottom, rgba(255,255,255,0.25), rgba(255,255,255,0.25)),
+    url("/noise.png");
+  background-size: 100% 100%, 100% 100%, 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* clip it to the text */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+          background-clip: text;
+          color: transparent;
+}
+
+/* make each char an inline-block so GSAP can tween y-position */
+#hero-title div {
+  display: inline-block;
 }
