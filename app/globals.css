@@ -109,7 +109,9 @@ body {
   opacity: 1 !important;
 }
 
-
+.video {
+  @apply w-full md:h-[80%] h-1/2 absolute bottom-0 md:object-contain object-bottom object-cover;
+}
 #hero-title,
 #hero-title div {
   /* your noise + gradient fill */

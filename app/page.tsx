@@ -3,6 +3,7 @@ import NavBar from "./components/nav";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import CocktailsPrice from "./components/cocktails-price";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -11,7 +12,8 @@ export default function Home() {
     <div className="bg-black">
       <NavBar />
       <Hero />
-      <div className="bg-black h-[500px]"></div>
+      <CocktailsPrice />
+      <div className="bg-black h-[1500px]"></div>
     </div>
   );
 }
