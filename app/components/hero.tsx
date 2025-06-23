@@ -8,7 +8,7 @@ import { SplitText } from "gsap/SplitText";
 import { gsap } from "gsap";
 import SplitType from "split-type";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useMediaQuery } from 'react-responsive'
+// import { useMediaQuery } from 'react-responsive'
 import BackGroundNoise from './background-noise'
 
 gsap.registerPlugin(SplitText);
@@ -18,7 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
     const videoRef = useRef<HTMLVideoElement | null>(null);
 
-    const isMobile = useMediaQuery({ maxWidth: 767 });
+    // const isMobile = useMediaQuery({ maxWidth: 767 });
 
 
     useGSAP(() => {
@@ -160,7 +160,7 @@ const Hero = () => {
     return (
         <>
             <div id="hero" className='relative overflow-hidden flex justify-center px-30 z-10 min-h-dvh w-full border border-transparent'>
-                <BackGroundNoise />
+                <BackGroundNoise size='xl' />
                 <div className='z-1 w-full'>
                     <h1 id="hero-title" className='font-negra text-[300px] uppercase tracking-wide text-center'>
                         Mojito
@@ -182,7 +182,7 @@ const Hero = () => {
                         id="right-leaf"
                     />
 
-                    <div className='flex flex-row justify-between z-1 xl:mt-20 md:hidden xl:flex'>
+                    <div className='flex flex-row justify-between z-1 xl:mt-40 md:hidden xl:flex'>
                         <div>
                             <p className='hero-left-content__title font-light text-base'>Cool. Crisp. Classic.</p>
                             <h2 className='hero-left-content__content font-negra text-5xl mt-2' style={{ color: 'rgba(231, 211, 147, 1)' }}>Sip the Spirit <br /> of Summer</h2>

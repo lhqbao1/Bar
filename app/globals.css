@@ -17,6 +17,14 @@
 
 @font-face {
   font-family: MonaSans;
+  src: url('../public/fonts/MonaSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: MonaSans;
   src: url('../public/fonts/MonaSans-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
@@ -80,16 +88,26 @@ body {
 
 
 .mask-fade-circle {
-  /* -webkit-mask-image: radial-gradient(ellipse , rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 100%); */
-  /* mask-image: radial-gradient(ellipse , rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 1) 100%); */
   -webkit-mask-image: radial-gradient(ellipse, black 0%, transparent 80%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse, black 0%, transparent 80%, transparent 100%);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-position: center;
   mask-position: center;
-  /* -webkit-mask-size: cover;
-  mask-size: cover; */
+}
+
+.abt-image {
+  /* -webkit-mask-image: url('/images/noise.png');
+  mask-image: url('/images/noise.png');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  mix-blend-mode: overlay */
+  background-image: url('/images/noise.png');
+  background-size: 100% 100%, 100% 100%, 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .glow-circle {
@@ -137,7 +155,27 @@ body {
           color: transparent;
 }
 
-/* make each char an inline-block so GSAP can tween y-position */
+#art-title, #art-title div {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(230, 230, 230, 0.2),
+      rgba(230, 230, 230, 0.1)
+    ),
+    url("/images/noise.png");
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  background-size: 100% 100%, 100% 100%, 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 #hero-title div {
+  display: inline-block;
+}
+
+#art-title div {
   display: inline-block;
 }
