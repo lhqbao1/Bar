@@ -138,11 +138,11 @@ const About = () => {
                         aria-label="See Best Cocktails"
                         className='px-5 bg-white py-3 rounded-full text-black text-sm font-normal mb-6 cursor-pointer'
                     >Best Cocktails</button>
-                    <h2 id='about-title' className='font-negra text-7xl'>Where every detail matters—from muddle to garnish</h2>
+                    <h2 id='about-title' className='font-negra text-7xl text-white'>Where every detail matters—from muddle to garnish</h2>
                 </div>
                 <div className='col-span-2'></div>
                 <div className='col-span-2'>
-                    <p id="about-description" className='text-sm leading-7 font-light'>Every cocktail we serve is a reflection of our obsession with detail — from the first muddle to the final garnish. That care is what turns a simple drink into something truly memorable. </p>
+                    <p id="about-description" className='text-sm leading-7 font-light text-white'>Every cocktail we serve is a reflection of our obsession with detail — from the first muddle to the final garnish. That care is what turns a simple drink into something truly memorable. </p>
                     <div id="about-rating" className='flex flex-row gap-10 relative justify-between xl:mt-8'>
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-row gap-1'>
@@ -152,8 +152,8 @@ const About = () => {
                                 <Star fill="white" />
                                 <Star fill="white" />
                             </div>
-                            <p>4.5/5</p>
-                            <p className='text-[11px] font-light'>More than +12000 customers</p>
+                            <p className='text-white'>4.5/5</p>
+                            <p className='text-[11px] font-light text-white'>More than +12000 customers</p>
                         </div>
                         <div className='absolute left-1/2 h-full w-0.5 bg-white rounded-md'></div>
                         <div

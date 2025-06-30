@@ -79,7 +79,7 @@ const Contact = () => {
                 id="footer-drinks"
             />
 
-            <div className='flex flex-col gap-14 items-center z-10'>
+            <div className='flex flex-col gap-14 items-center z-10 text-white'>
                 <h1 className='font-negra text-6xl'>Where to Find Us</h1>
                 <div className='footer-address flex flex-col gap-5 text-center'>
                     <p className='uppercase text-sm font-medium'>Visit our store</p>

@@ -183,11 +183,11 @@ const Hero = () => {
 
                     <div className='flex flex-row justify-between z-1 xl:mt-40 md:hidden xl:flex'>
                         <div>
-                            <p className='hero-left-content__title font-light text-base'>Cool. Crisp. Classic.</p>
+                            <p className='hero-left-content__title font-light text-base text-white'>Cool. Crisp. Classic.</p>
                             <h2 className='hero-left-content__content font-negra text-5xl mt-2' style={{ color: 'rgba(231, 211, 147, 1)' }}>Sip the Spirit <br /> of Summer</h2>
                         </div>
                         <div className='hero-right-container xl:w-[300px]'>
-                            <p className='hero-right-content__content font-light mb-3 w-[300px]'>Every cocktail on our menu is a blend of premium ingredients, creative flair, and timeless recipes — designed to delight your senses. </p>
+                            <p className='hero-right-content__content font-light mb-3 w-[300px] text-white'>Every cocktail on our menu is a blend of premium ingredients, creative flair, and timeless recipes — designed to delight your senses. </p>
                             <div id="cocktail-link" className='hero-right-content__link flex flex-row gap-1 items-center'>
                                 <Link href={''} className='font-light text-white opacity-80 text-xs tracking-[3px]'>View cocktails </Link>
                                 <ArrowRight size={16} color='white' className='opacity-80' />

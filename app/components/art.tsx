@@ -192,7 +192,7 @@ const Art = () => {
                         return (
                             <div key={index} className='art-features flex flex-row gap-2 items-center'>
                                 <BadgeCheck fill='white' color='black' />
-                                <p className='font-light'>{item}</p>
+                                <p className='font-light text-white'>{item}</p>
                             </div>
                         )
                     })}
@@ -212,8 +212,8 @@ const Art = () => {
                         className='mask-image scale-120'
                     />
                     <div className='flex flex-col gap-4 fade-content opacity-0 items-center justify-center'>
-                        <h2 className='text-5xl font-negra font-bold'>Made with Craft - Poured with Passion</h2>
-                        <p className='text-sm font-light'>This is not a drink. It is a carefully crafted moment made just for you</p>
+                        <h2 className='text-5xl font-negra font-bold text-white'>Made with Craft - Poured with Passion</h2>
+                        <p className='text-sm font-light text-white'>This is not a drink. It is a carefully crafted moment made just for you</p>
                     </div>
                 </div>
 
@@ -222,7 +222,7 @@ const Art = () => {
                         return (
                             <div key={index} className='art-goods flex flex-row gap-2 items-center'>
                                 <BadgeCheck fill='white' color='black' />
-                                <p className='font-light'>{item}</p>
+                                <p className='font-light text-white'>{item}</p>
                             </div>
                         )
                     })}
@@ -232,7 +232,7 @@ const Art = () => {
             {/* <div className='flex flex-row justify-between w-full will-fade'>
                 
             </div> */}
-            <h2 className='absolute bottom-0 text-6xl font-negra font-bold will-fade'>Sip-Worthy Perfection</h2>
+            <h2 className='absolute bottom-0 text-6xl font-negra font-bold will-fade text-white'>Sip-Worthy Perfection</h2>
 
         </div>
     )

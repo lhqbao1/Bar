@@ -95,7 +95,7 @@ const Menu = () => {
                             setCurrentItem(index);
                             console.log(item)
                         }}>
-                            <div className={`z-1 font-negra  text-4xl px-4 ${currentItem === index ? 'text-white' : 'text-gray-600'} `}>{item.name}</div>
+                            <div className={`z-1 font-negra  text-4xl px-4  ${currentItem === index ? 'text-white' : 'text-gray-600'} `}>{item.name}</div>
                             <div className={`absolute -bottom-1 w-full h-[1px]  ${currentItem === index ? 'bg-white' : 'bg-gray-600'}`}></div>
                         </div>
                     )
@@ -104,7 +104,7 @@ const Menu = () => {
             <div className='w-full'>
                 <div className='absolute left-16 xl:top-1/3'>
                     <div className='flex flex-col gap-4'>
-                        <h2 className='font-negra text-3xl z-1 xl:max-w-15'>{currentItem === 0 ? sliderLists[sliderLists.length - 1].name : sliderLists[currentItem - 1].name}</h2>
+                        <h2 className='font-negra text-3xl z-1 xl:max-w-15 text-white'>{currentItem === 0 ? sliderLists[sliderLists.length - 1].name : sliderLists[currentItem - 1].name}</h2>
                         <Image
                             src={'/images/right-arrow.png'}
                             height={50}
@@ -117,7 +117,7 @@ const Menu = () => {
                 </div>
                 <div className='absolute right-16 xl:top-1/3'>
                     <div className='flex flex-col gap-4 items-end'>
-                        <h2 className='font-negra text-3xl z-1 xl:max-w-30 text-right'>{currentItem === 3 ? sliderLists[0].name : sliderLists[currentItem + 1].name}</h2>
+                        <h2 className='font-negra text-3xl z-1 xl:max-w-30 text-right text-white'>{currentItem === 3 ? sliderLists[0].name : sliderLists[currentItem + 1].name}</h2>
                         <Image
                             src={'/images/left-arrow.png'}
                             height={50}
@@ -132,12 +132,12 @@ const Menu = () => {
             <div className='menu-item-container flex flex-col items-center h-full w-full'>
                 <div className='absolute xl:bottom-50  flex flex-row justify-between z-1 w-full xl:px-30 items-end'>
                     <div className='menu-item-name flex flex-col gap-2'>
-                        <p className='menu-item__sub text-sm font-light'>Recipes for:</p>
+                        <p className='menu-item__sub text-sm font-light text-white'>Recipes for:</p>
                         <h2 className='menu-item__name font-negra text-5xl' style={{ color: 'rgba(231, 211, 147, 1)' }}>{sliderLists[currentItem].name}</h2>
                     </div>
                     <div className='menu-item-name flex flex-col gap-2 xl:max-w-[440px]'>
                         <p className='menu-item__title text-5xl font-negra' style={{ color: 'rgba(231, 211, 147, 1)' }}>{sliderLists[currentItem].title}</p>
-                        <h2 className='menu-item__des text-sm font-light leading-6'>{sliderLists[currentItem].description}</h2>
+                        <h2 className='menu-item__des text-sm font-light leading-6 text-white'>{sliderLists[currentItem].description}</h2>
                     </div>
                 </div>
             </div>

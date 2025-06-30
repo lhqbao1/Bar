@@ -96,29 +96,29 @@ const CocktailsPrice = () => {
             <BackGroundNoise size='l' className='' />
             <div className='flex justify-between w-full xl:pt-16 z-1'>
                 <div className='flex flex-col xl:gap-5 gap-2'>
-                    <h3 className='cocktails-list-left__title font-medium text-sm'>Most popular cocktails:</h3>
+                    <h3 className='cocktails-list-left__title font-medium text-sm text-white'>Most popular cocktails:</h3>
                     {cocktailLists.map((item, index) => {
                         return (
                             <div className='cocktails-list-left__items flex flex-row justify-between xl:gap-14' key={index}>
                                 <div className='cocktail-name'>
                                     <div className='font-negra text-2xl' style={{ color: 'rgba(231, 211, 147, 1)' }}>{item.name}</div>
-                                    <div className='text-xs font-light'>{item.country} | {item.detail}</div>
+                                    <div className='text-xs font-light text-white'>{item.country} | {item.detail}</div>
                                 </div>
-                                <div className='text-base font-light xl:leading-7 leading-0'>- {item.price}</div>
+                                <div className='text-base font-light xl:leading-7 leading-0 text-white'>- {item.price}</div>
                             </div>
                         )
                     })}
                 </div>
                 <div className='flex flex-col xl:gap-5 gap-2'>
-                    <h3 className='cocktails-list-right__title font-medium text-sm'>Most popular cocktails:</h3>
+                    <h3 className='cocktails-list-right__title font-medium text-sm text-white'>Most popular cocktails:</h3>
                     {mockTailLists.map((item, index) => {
                         return (
                             <div className='cocktails-list-right__items flex flex-row justify-between xl:gap-14' key={index}>
                                 <div className='cocktail-name'>
                                     <div className='font-negra text-2xl' style={{ color: 'rgba(231, 211, 147, 1)' }}>{item.name}</div>
-                                    <div className='text-xs font-light'>{item.country} | {item.detail}</div>
+                                    <div className='text-xs font-light text-white'>{item.country} | {item.detail}</div>
                                 </div>
-                                <div className='text-base font-light xl:leading-7 leading-0'>- {item.price}</div>
+                                <div className='text-base font-light xl:leading-7 leading-0 text-white'>- {item.price}</div>
                             </div>
                         )
                     })}
