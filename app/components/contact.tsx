@@ -16,7 +16,6 @@ const Contact = () => {
                 trigger: '#contact',
                 start: 'top center',
                 end: 'bottom bottom',
-                markers: true
             }
         })
 

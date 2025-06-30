@@ -99,7 +99,7 @@ const Hero = () => {
                     start: "center 60%",
                     end: "bottom top",
                     scrub: true,
-                    pin: true
+                    pin: true,
                 },
             });
 
@@ -108,17 +108,17 @@ const Hero = () => {
                 ease: "none",
             });
         };
-        handleMetadata()
-        // // ✅ If already loaded
-        // if (videoEl.readyState >= 1) {
-        //     handleMetadata();
-        // } else {
-        //     videoEl.addEventListener("loadedmetadata", handleMetadata);
-        // }
 
-        // return () => {
-        //     videoEl.removeEventListener("loadedmetadata", handleMetadata);
-        // };
+        // ✅ Only call once, depending on readyState
+        if (videoEl.readyState >= 1) {
+            handleMetadata();
+        } else {
+            videoEl.addEventListener("loadedmetadata", handleMetadata);
+        }
+
+        return () => {
+            videoEl.removeEventListener("loadedmetadata", handleMetadata);
+        };
     }, []);
 
 
