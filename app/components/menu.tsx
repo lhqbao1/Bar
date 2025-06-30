@@ -48,9 +48,9 @@ const Menu = () => {
                 trigger: '#menu',
                 start: 'top top',
                 end: '+=1000',
-                scrub: 1.5,
-                pin: true,
-                anticipatePin: 1
+                scrub: true,
+                // pin: true,
+                // anticipatePin: 1
             }
         })
 
@@ -61,19 +61,19 @@ const Menu = () => {
             .to("#right-leaf-menu", {
                 y: -500
             }, "<")
-            .fromTo('.menu-image',
-                {
-                    scale: 1,
-                    y: 0,
-                    opacity: 1,
-                },
-                {
-                    scale: 1.15,
-                    y: -80,
-                    opacity: 1,
-                    ease: 'power1.inOut'
-                }, "<"
-            );
+        // .fromTo('.menu-image',
+        //     {
+        //         scale: 1,
+        //         y: 0,
+        //         opacity: 1,
+        //     },
+        //     {
+        //         scale: 1.15,
+        //         y: -80,
+        //         opacity: 1,
+        //         ease: 'power1.inOut'
+        //     }, "<"
+        // );
     }, [])
 
     return (
