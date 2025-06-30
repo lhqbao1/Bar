@@ -75,11 +75,13 @@ const Art = () => {
         function initPin() {
             const maskTimeline = gsap.timeline({
                 scrollTrigger: {
-                    trigger: '#art',
-                    start: 'bottom 95%',
-                    end: 'bottom center',
+                    trigger: '#art-mask-section',
+                    start: 'bottom 85%',
+                    // end: 'bottom center',
+                    end: '+=1000',
                     scrub: 1.5,
-                    pin: true,
+                    pin: '#art',
+                    markers: true
                 }
             });
 
@@ -95,6 +97,7 @@ const Art = () => {
                     maskSize: '500%',
                     duration: 2,
                     borderRadius: 20,
+                    top: 0,
                     ease: 'linear'
                 })
                 .to('.fade-content', {
@@ -106,9 +109,76 @@ const Art = () => {
             ScrollTrigger.refresh();
         }
     }, []);
+    // GSAP animation for the mask image and fade content
+    // useGSAP(() => {
+    //     const image = document.querySelector('#art-mask-section .mask-image') as HTMLImageElement;
+
+    //     // Đảm bảo ảnh đã tải xong trước khi khởi tạo animation
+    //     if (image && !image.complete) {
+    //         image.addEventListener('load', () => initAnimation());
+    //     } else {
+    //         initAnimation();
+    //     }
+
+    //     function initAnimation() {
+    //         // 1. Tạo timeline chứa tất cả các hoạt ảnh của bạn
+    //         // KHÔNG CÓ ScrollTrigger ở đây
+    //         const maskTimeline = gsap.timeline();
+
+    //         maskTimeline
+    //             .to('.will-fade', {
+    //                 opacity: 0,
+    //                 stagger: 1,
+    //                 ease: 'power1.in'
+    //             })
+    //             .to('.mask-image', {
+    //                 scale: 1.3,
+    //                 maskPosition: 'center',
+    //                 maskSize: '500%',
+    //                 duration: 2,
+    //                 borderRadius: 20,
+    //                 top: 0,
+    //                 ease: 'linear'
+    //             })
+    //             .to('.fade-content', {
+    //                 opacity: 1,
+    //                 duration: 1,
+    //                 ease: 'back'
+    //             });
+
+    //         // 2. Lấy tổng thời lượng của toàn bộ timeline animation
+    //         const totalAnimationDuration = maskTimeline.totalDuration();
+
+    //         // 3. Tạo ScrollTrigger ĐẦU TIÊN để liên kết animation với việc cuộn
+    //         // Trigger này sẽ dựa vào #art-mask-section để bắt đầu animation chính xác
+    //         ScrollTrigger.create({
+    //             trigger: '#art-mask-section', // Trigger animation dựa vào phần này
+    //             start: 'center 30%', // Bắt đầu khi center của mask-section đi qua bottom của viewport
+    //             end: `bottom center`, // Đảm bảo đủ không gian cho animation
+    //             scrub: 1.5,
+    //             // KHÔNG CÓ pin ở đây, vì chúng ta sẽ pin #art bằng một ScrollTrigger khác
+    //             markers: true, // Để debug
+    //             animation: maskTimeline // Liên kết timeline animation
+    //         });
+
+    //         // 4. Tạo ScrollTrigger THỨ HAI để pin toàn bộ #art section
+    //         // ScrollTrigger này sẽ bắt đầu pin khi trigger của animation (art-mask-section) bắt đầu
+    //         ScrollTrigger.create({
+    //             trigger: '#art-mask-section', // Dùng lại trigger của animation
+    //             start: 'center bottom', // Bắt đầu pin CÙNG LÚC với animation
+    //             end: `+=500`, // Pin kéo dài đủ để animation hoàn thành
+    //             pin: '#art', // **Pin toàn bộ #art section**
+    //             pinSpacing: true, // Giúp duy trì bố cục trang sau khi pin kết thúc
+    //             markers: true // Để debug
+    //         });
+
+    //         // Đảm bảo ScrollTrigger được làm mới sau khi DOM và ảnh đã sẵn sàng
+    //         ScrollTrigger.refresh();
+    //     }
+    // }, []);
 
     return (
-        <div id="art" className='relative px-30 flex flex-col items-center min-h-dvh radial-gradient' style={{
+        <div id="art" className='relative flex flex-col items-center min-h-dvh radial-gradient' style={{
             background: 'radial-gradient(50% 50% at 50% 50%, #202020 0%, #000000 100%)'
         }}>
             <h1
@@ -117,27 +187,8 @@ const Art = () => {
             >
                 The ART
             </h1>
-            <div id='art-mask-section' className='absolute bottom-10 flex flex-col items-center gap-30' >
-                <Image
-                    src={'/images/under-img.jpg'}
-                    height={800}
-                    width={600}
-                    alt=''
-                    style={{
-                        WebkitMaskImage: "url('/images/mask-img.png')",
-                        maskImage: "url('/images/mask-img.png')",
-                        maskRepeat: 'no-repeat',
-                        maskPosition: 'center'
-                    }}
-                    className='mask-image scale-120'
-                />
-                <div className='flex flex-col gap-4 fade-content opacity-0 items-center justify-center'>
-                    <h2 className='text-5xl font-negra font-bold'>Made with Craft - Poured with Passion</h2>
-                    <p className='text-sm font-light'>This is not a drink. It is a carefully crafted moment made just for you</p>
-                </div>
-            </div>
-            <div className='flex flex-row justify-between w-full will-fade'>
-                <div className='flex flex-col gap-4'>
+            <div className='relative flex flex-row justify-between w-full px-30'>
+                <div className='flex flex-col gap-4 absolute left-30 top-1/3 will-fade'>
                     {featureLists.map((item, index) => {
                         return (
                             <div key={index} className='art-features flex flex-row gap-2 items-center'>
@@ -147,7 +198,27 @@ const Art = () => {
                         )
                     })}
                 </div>
-                <div className='flex flex-col gap-4'>
+                <div id='art-mask-section' className='w-full h-full flex flex-col items-center gap-30 -mt-[200px]' >
+                    <Image
+                        src={'/images/under-img.jpg'}
+                        height={800}
+                        width={600}
+                        alt=''
+                        style={{
+                            WebkitMaskImage: "url('/images/mask-img.png')",
+                            maskImage: "url('/images/mask-img.png')",
+                            maskRepeat: 'no-repeat',
+                            maskPosition: 'center'
+                        }}
+                        className='mask-image scale-120'
+                    />
+                    <div className='flex flex-col gap-4 fade-content opacity-0 items-center justify-center'>
+                        <h2 className='text-5xl font-negra font-bold'>Made with Craft - Poured with Passion</h2>
+                        <p className='text-sm font-light'>This is not a drink. It is a carefully crafted moment made just for you</p>
+                    </div>
+                </div>
+
+                <div className='flex flex-col gap-4 absolute right-30 top-1/3 will-fade'>
                     {goodLists.map((item, index) => {
                         return (
                             <div key={index} className='art-goods flex flex-row gap-2 items-center'>
@@ -158,6 +229,10 @@ const Art = () => {
                     })}
                 </div>
             </div>
+
+            {/* <div className='flex flex-row justify-between w-full will-fade'>
+                
+            </div> */}
             <h2 className='absolute bottom-0 text-6xl font-negra font-bold will-fade'>Sip-Worthy Perfection</h2>
 
         </div>
