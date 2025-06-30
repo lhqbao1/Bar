@@ -54,10 +54,10 @@ const Menu = () => {
 
         scrollTl
             .to("#left-leaf-menu", {
-                y: -500
+                y: 500
             })
             .to("#right-leaf-menu", {
-                y: 500
+                y: -500
             }, "<")
             .fromTo('.menu-image',
                 {
@@ -66,9 +66,9 @@ const Menu = () => {
                     opacity: 1,
                 },
                 {
-                    scale: 1.15,       // subtle zoom for depth
-                    y: -80,            // drift image upward as you scroll
-                    opacity: 1,        // keep opacity steady
+                    scale: 1.15,
+                    y: -80,
+                    opacity: 1,
                     ease: 'power1.inOut'
                 }, "<"
             );
@@ -89,7 +89,7 @@ const Menu = () => {
                 alt=""
                 height={325}
                 width={325}
-                className='absolute left-0 bottom-0 object-cover w-[200px]'
+                className='absolute left-0 top-0 object-cover w-[200px]'
                 id="left-leaf-menu"
             />
             <Image
@@ -97,7 +97,7 @@ const Menu = () => {
                 alt=""
                 height={325}
                 width={325}
-                className='absolute right-0 top-0 w-[200px] object-cover'
+                className='absolute right-0 bottom-0 w-[200px] object-cover'
                 id="right-leaf-menu"
             />
             <div className='menu-nav w-full flex flex-row gap-16 justify-center items-center'>
