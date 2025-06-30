@@ -13,38 +13,46 @@ const Contact = () => {
     useGSAP(() => {
         const tl = gsap.timeline({
             scrollTrigger: {
-                trigger: '#contact',
+                trigger: '#footer',
                 start: 'top center',
                 end: 'bottom bottom',
             }
-        })
+        });
 
         tl
-            .from('#contact h1', {
+            .from('#footer h1', {
                 y: 100,
                 opacity: 0,
-            })
+                duration: 0.5,
+            }, 'start')  // đặt label "start" ngay tại tween đầu
+
             .from('.footer-address', {
                 y: 100,
                 opacity: 0,
-            })
+                duration: 0.5,
+            }, 'start+=0.5')  // 0.5s sau label "start"
+
             .from('.footer-contact', {
                 y: 100,
                 opacity: 0,
-            })
+                duration: 0.5,
+            }, 'start+=1')    // 1s sau label "start"
+
             .from('.footer-hours', {
                 y: 100,
                 opacity: 0,
-            })
+                duration: 0.5,
+            }, 'start+=1.5')  // 1.5s sau label "start"
+
             .from('.footer-socials', {
                 y: 100,
                 opacity: 0,
-            })
+                duration: 0.5,
+            }, 'start+=2');   // 2s sau label "start"
+    }, []);
 
-
-    }, [])
     return (
-        <div id='contact' className='px-30 py-10 relative min-h-screen w-full'>
+        <div id='footer' className='px-30 py-10 relative min-h-screen w-full'>
             <BackGroundNoise size='xl' />
             <Image
                 src="/images/footer-left-leaf.png"

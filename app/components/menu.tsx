@@ -4,12 +4,11 @@ import BackGroundNoise from './background-noise'
 import { sliderLists } from '@/data/data'
 import Image from 'next/image'
 import gsap from 'gsap'
-import { useScrollTriggerRefresh } from '@/hook/refresh'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 const Menu = () => {
-    useScrollTriggerRefresh()
+    // useScrollTriggerRefresh()
     const [currentItem, setCurrentItem] = useState(0)
 
     useEffect(() => {
@@ -61,23 +60,10 @@ const Menu = () => {
             .to("#right-leaf-menu", {
                 y: -500
             }, "<")
-        // .fromTo('.menu-image',
-        //     {
-        //         scale: 1,
-        //         y: 0,
-        //         opacity: 1,
-        //     },
-        //     {
-        //         scale: 1.15,
-        //         y: -80,
-        //         opacity: 1,
-        //         ease: 'power1.inOut'
-        //     }, "<"
-        // );
     }, [])
 
     return (
-        <div id="menu" className='relative px-30 xl:mt-40 py-10 h-screen flex flex-col justify-between items-center'>
+        <div id="menu" className='relative px-30 xl:mt-20 py-10 min-h-screen flex flex-col justify-between items-center'>
             <BackGroundNoise />
             <Image
                 src={sliderLists[currentItem].image}

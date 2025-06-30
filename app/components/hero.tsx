@@ -70,7 +70,6 @@ const Hero = () => {
                 start: "top-=30 top",
                 end: "bottom top",
                 scrub: true,
-                // markers: true, // ⬅️ shows scroll lines in browser
             },
         });
 

@@ -65,7 +65,7 @@ const Art = () => {
 
     // GSAP animation for the mask image and fade content
     useGSAP(() => {
-        const image = document.querySelector('#art-mask-section .mask-image') as HTMLImageElement;
+        const image = document.querySelector('.mask-image') as HTMLImageElement;
         if (image && !image.complete) {
             image.addEventListener('load', () => initPin());
         } else {
@@ -81,7 +81,6 @@ const Art = () => {
                     end: '+=1000',
                     scrub: 1.5,
                     pin: '#art',
-                    markers: true
                 }
             });
 
