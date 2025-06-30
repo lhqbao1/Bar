@@ -42,7 +42,7 @@ const NavBar = () => {
                         alt=''
                         className='size-8'
                     />
-                    <p className="font-negra text-[28px] absolute top-0 inline-block w-[200px] left-9">
+                    <p className="font-negra text-[28px] absolute top-0 inline-block w-[200px] left-9 text-white">
                         Velvet Pour
                     </p>
                 </div>
