@@ -7,7 +7,9 @@ import gsap from 'gsap'
 import SplitType from 'split-type'
 import { useGSAP } from '@gsap/react'
 import { useScrollTriggerRefresh } from '@/hook/refresh'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+gsap.registerPlugin(ScrollTrigger)
 const Art = () => {
     useScrollTriggerRefresh();
 

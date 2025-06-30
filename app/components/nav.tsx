@@ -12,7 +12,7 @@ const NavBar = () => {
     const buttonRefs = useRef<(HTMLSpanElement | null)[]>([]) // store refs in an array
     const underlineRefs = useRef<(HTMLSpanElement | null)[]>([])
 
-    const HoverButton = (index) => {
+    const HoverButton = (index: number) => {
         const underline = underlineRefs.current[index]
         gsap.to(underline, {
             scaleX: 1,
@@ -22,7 +22,7 @@ const NavBar = () => {
     }
 
     // Optional: revert on mouse leave
-    const LeaveButton = (index) => {
+    const LeaveButton = (index: number) => {
         const underline = underlineRefs.current[index]
         gsap.to(underline, {
             scaleX: 0,

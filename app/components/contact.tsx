@@ -1,9 +1,49 @@
+'use client'
 import Image from 'next/image'
 import React from 'react'
 import BackGroundNoise from './background-noise'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Contact = () => {
 
+    useGSAP(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#contact',
+                start: 'top center',
+                end: 'bottom bottom',
+                markers: true
+            }
+        })
+
+        tl
+            .from('#contact h1', {
+                y: 100,
+                opacity: 0,
+            })
+            .from('.footer-address', {
+                y: 100,
+                opacity: 0,
+            })
+            .from('.footer-contact', {
+                y: 100,
+                opacity: 0,
+            })
+            .from('.footer-hours', {
+                y: 100,
+                opacity: 0,
+            })
+            .from('.footer-socials', {
+                y: 100,
+                opacity: 0,
+            })
+
+
+    }, [])
     return (
         <div id='contact' className='px-30 py-10 relative min-h-screen w-full'>
             <BackGroundNoise size='xl' />
@@ -34,23 +74,23 @@ const Contact = () => {
 
             <div className='flex flex-col gap-14 items-center z-10'>
                 <h1 className='font-negra text-6xl'>Where to Find Us</h1>
-                <div className='flex flex-col gap-5 text-center'>
+                <div className='footer-address flex flex-col gap-5 text-center'>
                     <p className='uppercase text-sm font-medium'>Visit our store</p>
                     <p className='text-2xl font-light'>456, Raq Blvd. #404, Los Angeles, CA 90210</p>
                 </div>
-                <div className='flex flex-col gap-5 text-center'>
+                <div className='footer-contact flex flex-col gap-5 text-center'>
                     <p className='uppercase text-sm font-medium'>Contact us</p>
                     <p className='text-2xl font-light'>(555) 987-6543</p>
                     <p className='text-2xl font-light'>hello@jsmcocktail.com</p>
                 </div>
-                <div className='flex flex-col gap-5 text-center'>
+                <div className='footer-hours flex flex-col gap-5 text-center'>
                     <p className='uppercase text-sm font-medium'>Open every day</p>
                     <p className='text-2xl font-light'>Mon-Thu : 11:00am - 12am</p>
                     <p className='text-2xl font-light'>Fri : 11:00am - 2am</p>
                     <p className='text-2xl font-light'>Sat : 9:00am - 2am</p>
                     <p className='text-2xl font-light'>Sun : 9:00am - 1 am</p>
                 </div>
-                <div className='flex flex-col gap-5 text-center'>
+                <div className='footer-socials flex flex-col gap-5 text-center'>
                     <p className='text-sm font-medium'>Socials</p>
                     <div className='flex flex-row gap-2'>
                         <Image src="/images/insta.png" alt="Instagram" width={24} height={24} className='size-7 cursor-pointer' />

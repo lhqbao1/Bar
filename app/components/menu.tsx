@@ -5,7 +5,9 @@ import { sliderLists } from '@/data/data'
 import Image from 'next/image'
 import gsap from 'gsap'
 import { useScrollTriggerRefresh } from '@/hook/refresh'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+gsap.registerPlugin(ScrollTrigger)
 const Menu = () => {
     useScrollTriggerRefresh()
     const [currentItem, setCurrentItem] = useState(0)
