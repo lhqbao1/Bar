@@ -8,7 +8,6 @@ import About from "./components/about";
 import Art from "./components/art";
 import Menu from "./components/menu";
 import Contact from "./components/contact";
-import HorizontalScrollPage from "./components/test";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
