@@ -72,11 +72,27 @@ const Art = () => {
             initPin();
         }
 
+
+
         function initPin() {
+            const isMobile = window.innerWidth < 768;
+            const isLaptop = window.innerWidth >= 768 && window.innerWidth < 1500;
+            const isDesktop = window.innerWidth >= 1500;
+
+            let startValue;
+
+            if (isMobile) {
+                startValue = 'bottom 50%';
+            } else if (isLaptop) {
+                startValue = 'bottom 110%';
+            } else if (isDesktop) {
+                startValue = 'bottom 90%';
+            }
+
             const maskTimeline = gsap.timeline({
                 scrollTrigger: {
                     trigger: '#art-mask-section',
-                    start: 'bottom 85%',
+                    start: startValue,
                     // end: 'bottom center',
                     end: '+=1000',
                     scrub: 1.5,
@@ -197,7 +213,7 @@ const Art = () => {
                         )
                     })}
                 </div>
-                <div id='art-mask-section' className='w-full h-full flex flex-col items-center gap-30 -mt-[200px]' >
+                <div id='art-mask-section' className='w-full h-full flex flex-col items-center gap-30 justify-center -mt-[120px]' >
                     <Image
                         src={'/images/under-img.jpg'}
                         height={800}
@@ -232,7 +248,7 @@ const Art = () => {
             {/* <div className='flex flex-row justify-between w-full will-fade'>
                 
             </div> */}
-            <h2 className='absolute bottom-0 text-6xl font-negra font-bold will-fade text-white'>Sip-Worthy Perfection</h2>
+            <h2 className='absolute bottom-0 text-6xl font-negra font-bold will-fade text-white md:bottom-26'>Sip-Worthy Perfection</h2>
 
         </div>
     )

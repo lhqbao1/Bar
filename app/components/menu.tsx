@@ -70,7 +70,7 @@ const Menu = () => {
                 height={800}
                 width={500}
                 alt=""
-                className={`absolute ${currentItem === 1 ? 'scale-75 bottom-[100px]' : 'bottom-[200px]'} menu-image`}
+                className={`absolute ${currentItem === 1 ? 'scale-75 2xl:bottom-[100px] xl:bottom-[0px]' : '2xl:bottom-[200px] xl:bottom-[120px]'} menu-image`}
             />
             <Image
                 src="/images/slider-left-leaf.png"
@@ -93,7 +93,6 @@ const Menu = () => {
                     return (
                         <div key={index} className='relative z-1 cursor-pointer menu-nav-button' onClick={() => {
                             setCurrentItem(index);
-                            console.log(item)
                         }}>
                             <div className={`z-1 font-negra  text-4xl px-4  ${currentItem === index ? 'text-white' : 'text-gray-600'} `}>{item.name}</div>
                             <div className={`absolute -bottom-1 w-full h-[1px]  ${currentItem === index ? 'bg-white' : 'bg-gray-600'}`}></div>
