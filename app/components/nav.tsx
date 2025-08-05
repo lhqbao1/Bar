@@ -32,8 +32,9 @@ const NavBar = () => {
     }
 
     return (
-        <div className='h-[90px] flex flex-row items-center'>
-            <div className='px-[90px] flex flex-row justify-between items-center w-full'>
+        <div className='sm:h-[90px] h-[130px] flex flex-row items-center'>
+            <div className="flex w-full flex-col gap-3 items-center justify-center sm:flex-row sm:justify-between sm:px-[90px]">
+                {/* Logo */}
                 <div className='flex gap-1 items-center relative'>
                     <Image
                         src={'/images/fav.png'}
@@ -42,11 +43,12 @@ const NavBar = () => {
                         alt=''
                         className='size-8'
                     />
-                    <p className="font-negra text-[28px] absolute top-0 inline-block w-[200px] left-9 text-white">
+                    <p className="inline-block pt-2 sm:absolute sm:top-0 sm:left-9 sm:w-[200px] sm:pt-0 font-negra text-[28px] text-white">
                         Velvet Pour
                     </p>
                 </div>
-                <div className='flex flex-row items-center gap-12 font-light text-sm'>
+                {/* Nav's links */}
+                <div className='flex flex-row items-center gap-12 text-sm font-medium sm:font-light text-white'>
                     {navLinks.map((item, index) => {
                         return (
                             <div
