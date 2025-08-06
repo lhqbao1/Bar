@@ -2,7 +2,7 @@
 import { featureLists, goodLists } from '@/data/data'
 import { BadgeCheck } from 'lucide-react'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 import gsap from 'gsap'
 import SplitType from 'split-type'
 import { useGSAP } from '@gsap/react'
@@ -56,66 +56,74 @@ const Art = () => {
     }, []);
 
     // GSAP animation for the mask image and fade content
-    useGSAP(() => {
+    useEffect(() => {
         const image = document.querySelector('.mask-image') as HTMLImageElement;
+
+        const handle = () => {
+            ScrollTrigger.matchMedia({
+                "(max-width: 767px)": () => {
+                    initPin("top 10%", "500%", 0.9, "400px"); // mobile
+                },
+                "(min-width: 768px) and (max-width: 1439px)": () => {
+                    initPin("bottom 110%", "200%", 1.2, "100%"); // laptop
+                },
+                "(min-width: 1440px)": () => {
+                    initPin("bottom 100%", "500%", 1.3, "100%"); // desktop
+                },
+            });
+        };
+
         if (image && !image.complete) {
-            image.addEventListener('load', () => initPin());
+            image.addEventListener("load", handle);
         } else {
-            initPin();
+            handle();
         }
 
-
-
-        function initPin() {
-            const isMobile = window.innerWidth < 768;
-            const isLaptop = window.innerWidth >= 768 && window.innerWidth < 1500;
-            const isDesktop = window.innerWidth >= 1500;
-
-            let startValue;
-
-            if (isMobile) {
-                startValue = 'bottom 50%';
-            } else if (isLaptop) {
-                startValue = 'bottom 110%';
-            } else if (isDesktop) {
-                startValue = 'bottom 90%';
-            }
-
+        function initPin(startValue: string, maskSize: string, scale: number, height: string) {
             const maskTimeline = gsap.timeline({
                 scrollTrigger: {
-                    trigger: '#art-mask-section',
+                    trigger: "#art-mask-section",
                     start: startValue,
-                    // end: 'bottom center',
-                    end: '+=1000',
+                    end: "+=1000",
                     scrub: 1.5,
-                    pin: '#art',
-                }
+                    pin: "#art",
+                    // markers: true,
+                },
             });
 
             maskTimeline
-                .to('.will-fade', {
+                .set(".mask-image", {
+                    scale,
+                    height, // 👈 đặt lại height đúng
+                })
+                .to(".will-fade", {
                     opacity: 0,
                     stagger: 1,
-                    ease: 'power1.in'
+                    ease: "power1.in",
                 })
-                .to('.mask-image', {
-                    scale: 1.3,
-                    maskPosition: 'center',
-                    maskSize: '500%',
+                .to(".mask-image", {
+                    scale,
+                    maskPosition: "center",
+                    maskSize,
                     duration: 2,
                     borderRadius: 20,
                     top: 0,
-                    ease: 'linear'
+                    ease: "linear",
                 })
-                .to('.fade-content', {
+                .to(".fade-content", {
                     opacity: 1,
                     duration: 1,
-                    ease: 'back'
+                    ease: "back",
                 });
 
             ScrollTrigger.refresh();
         }
+
+        return () => {
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        };
     }, []);
+
     // GSAP animation for the mask image and fade content
     // useGSAP(() => {
     //     const image = document.querySelector('#art-mask-section .mask-image') as HTMLImageElement;
@@ -185,17 +193,17 @@ const Art = () => {
     // }, []);
 
     return (
-        <div id="art" className='relative flex flex-col items-center min-h-dvh radial-gradient' style={{
+        <div id="art" className='relative flex flex-col items-center min-h-dvh radial-gradient sm:mt-0 !mt-4 sm:px-0 !px-6' style={{
             background: 'radial-gradient(50% 50% at 50% 50%, #202020 0%, #000000 100%)'
         }}>
             <h1
                 id='art-title'
-                className='text-center text-[300px] tracking-tight will-change-transform will-fade'
+                className='text-center 2xl:text-[300px] xl:text-[250px] text-[100px] tracking-tight will-change-transform will-fade'
             >
                 The ART
             </h1>
-            <div className='relative flex flex-row justify-between w-full px-30'>
-                <div className='flex flex-col gap-4 absolute left-30 top-1/3 will-fade'>
+            <div className='relative flex flex-row justify-between w-full sm:px-30'>
+                <div className='flex flex-col gap-4 absolute sm:left-30 sm:top-1/3 bottom-10 will-fade'>
                     {featureLists.map((item, index) => {
                         return (
                             <div key={index} className='art-features flex flex-row gap-2 items-center'>
@@ -205,7 +213,7 @@ const Art = () => {
                         )
                     })}
                 </div>
-                <div id='art-mask-section' className='w-full h-full flex flex-col items-center gap-30 justify-center -mt-[120px]' >
+                <div id='art-mask-section' className='w-full h-full flex flex-col items-center sm:gap-30 gap-5 justify-center sm:-mt-[120px] -mt-[70px] z-10' >
                     <Image
                         src={'/images/under-img.jpg'}
                         height={800}
@@ -217,15 +225,16 @@ const Art = () => {
                             maskRepeat: 'no-repeat',
                             maskPosition: 'center'
                         }}
-                        className='mask-image scale-120'
+                        className='mask-image sm:scale-120 scale-90 h-[400px] sm:h-full'
                     />
-                    <div className='flex flex-col gap-4 fade-content opacity-0 items-center justify-center'>
-                        <h2 className='text-5xl font-negra font-bold text-white'>Made with Craft - Poured with Passion</h2>
+                    <h2 className='sm:text-6xl text-4xl font-negra font-bold will-fade text-white md:bottom-26'>Sip-Worthy Perfection</h2>
+                    <div className='flex flex-col relative bottom-0 sm:absolute gap-4 fade-content opacity-0 items-center justify-center'>
+                        <h2 className='text-5xl font-negra font-bold text-white text-center sm:text-start'>Made with Craft - Poured with Passion</h2>
                         <p className='text-sm font-light text-white'>This is not a drink. It is a carefully crafted moment made just for you</p>
                     </div>
                 </div>
 
-                <div className='flex flex-col gap-4 absolute right-30 top-1/3 will-fade'>
+                <div className='flex flex-col gap-4 absolute sm:right-30 right-0 sm:top-1/3 -bottom-28 will-fade'>
                     {goodLists.map((item, index) => {
                         return (
                             <div key={index} className='art-goods flex flex-row gap-2 items-center'>
@@ -236,12 +245,6 @@ const Art = () => {
                     })}
                 </div>
             </div>
-
-            {/* <div className='flex flex-row justify-between w-full will-fade'>
-                
-            </div> */}
-            <h2 className='absolute bottom-0 text-6xl font-negra font-bold will-fade text-white md:bottom-26'>Sip-Worthy Perfection</h2>
-
         </div>
     )
 }

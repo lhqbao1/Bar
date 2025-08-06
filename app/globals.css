@@ -97,13 +97,6 @@ body {
 }
 
 .abt-image {
-  /* -webkit-mask-image: url('/images/noise.png');
-  mask-image: url('/images/noise.png');
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  mix-blend-mode: overlay */
   background-image: url('/images/noise.png');
   background-size: 100% 100%, 100% 100%, 100% 100%;
   background-position: center;
@@ -128,7 +121,7 @@ body {
 }
 
 .video {
-  @apply w-full md:h-[80%] h-1/2 absolute bottom-0 md:object-contain object-bottom object-cover;
+  @apply w-full md:h-[70%] h-full absolute bottom-0 md:object-contain object-bottom object-cover;
 }
 
 #hero-title,

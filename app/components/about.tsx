@@ -16,15 +16,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
     useGSAP(() => {
-        const titleSplit = new SplitType("#about-title", { types: "words" })
-        const desSplit = new SplitType("#about-description", { types: "lines" })
+        const titleSplit = new SplitType("#about-title", { types: "words" });
+        const desSplit = new SplitType("#about-description", { types: "lines" });
 
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: '#about',
                 start: 'top 80%',
             }
-        })
+        });
 
         tl
             .from(titleSplit.words, {
@@ -32,35 +32,41 @@ const About = () => {
                 opacity: 0,
                 stagger: 0.05,
                 duration: 1,
-                ease: 'back'
+                ease: 'back',
+                // clearProps: 'all',
             })
             .from('#about-title-button', {
                 x: -100,
                 opacity: 0,
                 duration: 0.5,
-                ease: 'power1.in'
+                ease: 'power1.in',
+                clearProps: 'all',
             }, "<")
             .from(desSplit.lines, {
                 x: 100,
                 stagger: 0.1,
                 opacity: 0,
                 duration: 1,
-                ease: 'back'
+                ease: 'back',
+                clearProps: 'all',
             }, "<")
             .from('#about-rating', {
                 y: 100,
                 opacity: 0,
                 duration: 1,
-                ease: 'power1.in'
+                ease: 'power1.in',
+                clearProps: 'all',
             }, "<")
             .from('.about-images', {
                 y: 200,
                 opacity: 0,
                 duration: 1,
                 stagger: 0.1,
-                ease: 'sine.in'
-            }, "<")
-    }, [])
+                ease: 'sine.in',
+                clearProps: 'all',
+            }, "<");
+    }, []);
+
 
     //Apply hover effect to images
     useEffect(() => {
@@ -128,22 +134,21 @@ const About = () => {
         }
     }, [])
 
-
     return (
-        <div id="about" className='px-30 py-30 w-full flex flex-col justify-center items-center gap-20'>
+        <div id="about" className='px-6 mt-20 sm:mt-0 sm:px-30 sm:py-30 w-full flex flex-col justify-center items-center gap-20'>
             <div className='grid grid-cols-7 items-center'>
-                <div className='col-span-3 xl:pr-14'>
+                <div className='col-span-7 sm:col-span-3 sm:pr-14'>
                     <button
                         id='about-title-button'
                         aria-label="See Best Cocktails"
                         className='px-5 bg-white py-3 rounded-full text-black text-sm font-normal mb-6 cursor-pointer'
                     >Best Cocktails</button>
-                    <h2 id='about-title' className='font-negra text-7xl text-white'>Where every detail matters—from muddle to garnish</h2>
+                    <h2 id='about-title' className='font-negra text-5xl sm:text-7xl text-white'>Where every detail matters—from muddle to garnish</h2>
                 </div>
-                <div className='col-span-2'></div>
-                <div className='col-span-2'>
+                <div className='sm:col-span-2 sm:block hidden'></div>
+                <div className='sm:col-span-2 col-span-7 mt-6 sm:mt-0'>
                     <p id="about-description" className='text-sm leading-7 font-light text-white'>Every cocktail we serve is a reflection of our obsession with detail — from the first muddle to the final garnish. That care is what turns a simple drink into something truly memorable. </p>
-                    <div id="about-rating" className='flex flex-row gap-10 relative justify-between xl:mt-8'>
+                    <div id="about-rating" className='flex flex-row gap-10 relative justify-between sm:mt-8 mt-6'>
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-row gap-1'>
                                 <Star fill="white" />
@@ -178,23 +183,21 @@ const About = () => {
                 </div>
             </div>
 
-            <div id="about-image-layout" className="grid grid-cols-8 grid-rows-2 gap-4 p-6 text-white rounded-lg w-[1300px]">
+            <div id="about-image-layout" className="grid grid-cols-8 grid-rows-2 gap-4 sm:p-0 p-0 text-white bg-black rounded-lg sm:w-[1300px] w-full relative overflow-hidden">
                 {/* Top Left Image */}
-                <div className='col-span-2 row-span-1 relative about-images rounded-lg overflow-hidden'>
+                <div className='sm:col-span-2 col-span-8 row-span-1 relative about-images rounded-lg overflow-hidden'>
                     <Image
                         src="/images/abt1.png"
                         alt="Bartender mixing cocktail"
                         height={250}
                         width={400}
-                        className="rounded-lg object-cover w-full h-full will-change-transform about-images-item"
+                        className="rounded-lg object-cover w-full sm:h-full h-[300px] will-change-transform about-images-item"
                     />
                     <div className='absolute inset-0 z-0 size-full bg-[url("/images/noise.png")] opacity-50 rounded-lg'></div>
                 </div>
 
-
-
                 {/* Center Text Block */}
-                <div className='perspective-1000 col-span-2 about-images row-span-1'>
+                <div className='perspective-1000 sm:col-span-2 col-span-8 about-images row-span-1'>
                     <div
                         className="bg-zinc-900 rounded-lg flex flex-col justify-center w-full h-full relative transition-transform rotate-card cursor-pointer"
                         style={{
@@ -251,47 +254,41 @@ const About = () => {
                     </div>
                 </div>
 
-
                 {/* Top Right Image */}
-                <div className='col-span-4 row-span-1 relative about-images rounded-lg overflow-hidden'>
+                <div className='sm:col-span-4 col-span-8 row-span-1 relative about-images rounded-lg overflow-hidden'>
                     <Image
                         src="/images/abt2.png"
                         alt="Bartender mixing cocktail"
                         height={250}
                         width={400}
-                        className="rounded-lg object-cover w-full h-full will-change-transform about-images-item"
+                        className="rounded-lg object-cover w-full sm:h-full h-[300px] will-change-transform about-images-item"
                     />
                     <div className='absolute inset-0 size-full bg-[url("/images/noise.png")] opacity-50'></div>
                 </div>
 
-
                 {/* Bottom Left Image */}
-                <div className='col-span-5 row-span-1 relative about-images rounded-lg overflow-hidden'>
+                <div className='sm:col-span-5 col-span-8 row-span-1 relative about-images rounded-lg overflow-hidden'>
                     <Image
                         src="/images/abt3.png"
                         alt="Bartender mixing cocktail"
                         height={250}
                         width={400}
-                        className="rounded-lg object-cover w-full h-full will-change-transform about-images-item"
+                        className="rounded-lg object-cover w-full sm:h-full h-[300px] will-change-transform about-images-item"
                     />
                     <div className='absolute inset-0 size-full bg-[url("/images/noise.png")] opacity-50'></div>
                 </div>
 
-
                 {/* Bottom Right Image */}
-                <div className='col-span-3 row-span-1 relative about-images rounded-lg overflow-hidden'>
+                <div className='sm:col-span-3 col-span-8 row-span-1 relative about-images rounded-lg overflow-hidden'>
                     <Image
                         src="/images/abt4.png"
                         alt="Bartender mixing cocktail"
                         height={250}
                         width={400}
-                        className="rounded-lg object-cover w-full h-full will-change-transform about-images-item"
+                        className="rounded-lg object-cover w-full sm:h-full h-[300px] will-change-transform about-images-item"
                     />
                     <div className='absolute inset-0 size-full bg-[url("/images/noise.png")] opacity-50'></div>
-
                 </div>
-
-
             </div>
         </div>
     )

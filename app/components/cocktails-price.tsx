@@ -92,10 +92,10 @@ const CocktailsPrice = () => {
     }, [])
 
     return (
-        <div id="cocktails-price" className='relative flex justify-center px-30 overflow-hidden xl:h-[850px]'>
+        <div id="cocktails-price" className='relative z-20 flex justify-center px-6 sm:px-30 overflow-hidden sm:h-[850px] mt-24 sm:mt-0'>
             <BackGroundNoise size='l' className='' />
-            <div className='flex justify-between w-full xl:pt-16 z-1'>
-                <div className='flex flex-col xl:gap-5 gap-2'>
+            <div className='flex flex-col sm:flex-row justify-between w-full xl:pt-16 z-1'>
+                <div className='flex flex-col gap-5'>
                     <h3 className='cocktails-list-left__title font-medium text-sm text-white'>Most popular cocktails:</h3>
                     {cocktailLists.map((item, index) => {
                         return (
@@ -109,8 +109,8 @@ const CocktailsPrice = () => {
                         )
                     })}
                 </div>
-                <div className='flex flex-col xl:gap-5 gap-2'>
-                    <h3 className='cocktails-list-right__title font-medium text-sm text-white'>Most popular cocktails:</h3>
+                <div className='flex flex-col xl:gap-5 gap-5 mt-5 sm:mt-0'>
+                    <h3 className='cocktails-list-right__title font-medium text-sm text-white hidden sm:block'>Most popular cocktails:</h3>
                     {mockTailLists.map((item, index) => {
                         return (
                             <div className='cocktails-list-right__items flex flex-row justify-between xl:gap-14' key={index}>
@@ -129,7 +129,7 @@ const CocktailsPrice = () => {
                 alt=""
                 height={325}
                 width={325}
-                className='absolute left-0 bottom-0 object-contain'
+                className='absolute left-0 bottom-0 object-contain hidden sm:block'
                 id="left-leaf-cocktails"
             />
             <Image
@@ -137,7 +137,7 @@ const CocktailsPrice = () => {
                 alt=""
                 height={325}
                 width={325}
-                className='absolute right-0 bottom-0 object-contain'
+                className='absolute right-0 bottom-0 object-contain hidden sm:block'
                 id="right-leaf-cocktails"
             />
         </div>
