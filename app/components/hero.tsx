@@ -2,13 +2,12 @@
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import { gsap } from "gsap";
 import SplitType from "split-type";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-// import { useMediaQuery } from 'react-responsive'
 import BackGroundNoise from './background-noise'
 
 gsap.registerPlugin(SplitText);
@@ -17,8 +16,23 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
     const videoRef = useRef<HTMLVideoElement | null>(null);
+    const [isMobile, setIsMobile] = useState(false);
+    const [isLaptop, setIsLaptop] = useState(false);
+    // const [isDesktop, setIsDesktop] = useState(false);
 
-    // const isMobile = useMediaQuery({ maxWidth: 767 });
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth;
+            setIsMobile(width < 768);
+            setIsLaptop(width >= 768 && width < 1500);
+            // setIsDesktop(width >= 1500);
+        };
+
+        handleResize(); // Gọi 1 lần khi component mount
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, [isMobile, isLaptop]);
 
 
     useGSAP(() => {
@@ -26,13 +40,12 @@ const Hero = () => {
         const splitLeftTitle = new SplitType(".hero-left-content__title", { types: "words" });
         const splitRightContent = SplitText.create(".hero-right-content__content", {
             type: "lines", // only split into words and lines (not characters)
-            // mask: "lines", // adds extra wrapper element around lines with overflow: clip (v3.13.0+)
             linesClass: "line++", // adds "line" class to each line element, plus an incremented one too ("line1", "line2", "line3", etc.)
         });
 
         // Add "text-center" to each line
         splitRightContent.lines.forEach(line => {
-            line.classList.add("text-center", "sm:text-start");
+            line.classList.add("!text-center", "!sm:text-start");
         });
 
         const tl = gsap.timeline()
@@ -104,7 +117,7 @@ const Hero = () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: "#video",
-                    start: "center 60%",
+                    start: `${isMobile ? "top 10%" : isLaptop ? "center 60%" : "center 60%"}`,
                     end: "bottom top",
                     scrub: true,
                     pin: true,
@@ -196,7 +209,7 @@ const Hero = () => {
                             <h2 className='hero-left-content__content font-negra text-5xl mt-2' style={{ color: 'rgba(231, 211, 147, 1)' }}>Sip the Spirit <br /> of Summer</h2>
                         </div>
                         <div className='hero-right-container w-full sm:w-[300px]'>
-                            <p className='hero-right-content__content font-light mb-3 w-full sm:w-[300px] text-white'>Every cocktail on our menu is a blend of premium ingredients, creative flair, and timeless recipes — designed to delight your senses. </p>
+                            <p className='hero-right-content__content font-light tracking-widest sm:tracking-normal mb-3 w-full sm:w-[300px] text-white text-sm sm:text-base'>Every cocktail on our menu is a blend of premium ingredients, creative flair, and timeless recipes — designed to delight your senses. </p>
                             <div id="cocktail-link" className='hero-right-content__link flex flex-row gap-1 items-center justify-center sm:justify-start'>
                                 <Link href={''} className='font-light text-white opacity-80 text-xs tracking-[3px]'>View cocktails </Link>
                                 <ArrowRight size={16} color='white' className='opacity-80' />
@@ -205,7 +218,7 @@ const Hero = () => {
                     </div>
                 </div>
             </div>
-            <div id="video" className="video absolute z-0 inset-0 flex justify-center top-[200px]">
+            <div id="video" className="video z-0 inset-0 flex justify-center !top-[350px] sm:!top-[200px]">
                 <video
                     ref={videoRef}
                     muted

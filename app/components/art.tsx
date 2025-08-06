@@ -14,14 +14,6 @@ gsap.registerPlugin(ScrollTrigger)
 const Art = () => {
     useScrollTriggerRefresh();
 
-    // // Refresh ScrollTrigger on window load
-    // useEffect(() => {
-    //     const handleLoad = () => ScrollTrigger.refresh();
-    //     window.addEventListener('load', handleLoad);
-
-    //     return () => window.removeEventListener('load', handleLoad);
-    // }, []);
-
     // Initialize GSAP and SplitType for animations
     useGSAP(() => {
         const titleSplit = new SplitType('#art-title', { types: 'chars' });
