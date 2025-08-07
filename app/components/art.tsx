@@ -62,7 +62,7 @@ const Art = () => {
         const handle = () => {
             ScrollTrigger.matchMedia({
                 "(max-width: 767px)": () => {
-                    initPin("top 20%", "500%", 0.9, "400px", "+=300"); // mobile
+                    initPin("top 10%", "500%", 0.9, "400px", "+=300"); // mobile
                 },
                 "(min-width: 768px) and (max-width: 1439px)": () => {
                     initPin("bottom 110%", "200%", 1.2, "100%", "+=700"); // laptop

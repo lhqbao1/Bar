@@ -200,7 +200,7 @@ const Hero = () => {
 
     return (
         <div className='relative'>
-            <div id="hero" className='relative overflow-hidden flex justify-center sm:px-30 px-2 z-10 min-h-dvh w-full border border-transparent'>
+            <div id="hero" className='relative overflow-hidden flex justify-center sm:px-30 px-2 z-10 mb-20 sm:mb-0 min-h-dvh w-full border border-transparent'>
                 <BackGroundNoise size='xl' />
                 <div className='z-10 w-full'>
                     <h1 id="hero-title" className='font-negra text-[110px] uppercase tracking-wide text-center sm:text-[300px] text-white'>
