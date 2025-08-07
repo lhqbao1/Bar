@@ -238,7 +238,7 @@ const Hero = () => {
                     </div>
                 </div>
             </div>
-            <div id="video-scroll-section" className="absolute top-[250px] sm:top-0 h-[100vh] w-full z-0">
+            <div id="video-scroll-section" className="absolute top-[250px] sm:top-0 h-[130vh] w-full z-0">
                 <div
                     id="video-wrapper"
                     className="absolute top-0 left-0 h-screen w-full flex justify-center items-start overflow-hidden"
