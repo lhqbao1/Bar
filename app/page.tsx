@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function Home() {
   return (
-    <div className="bg-black">
+    <div className="bg-black overflow-hidden">
       <NavBar />
       <Hero />
       <CocktailsPrice />

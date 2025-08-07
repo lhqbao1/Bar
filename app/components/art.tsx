@@ -62,13 +62,13 @@ const Art = () => {
         const handle = () => {
             ScrollTrigger.matchMedia({
                 "(max-width: 767px)": () => {
-                    initPin("top 10%", "500%", 0.9, "400px"); // mobile
+                    initPin("top 20%", "500%", 0.9, "400px", "+=300"); // mobile
                 },
                 "(min-width: 768px) and (max-width: 1439px)": () => {
-                    initPin("bottom 110%", "200%", 1.2, "100%"); // laptop
+                    initPin("bottom 110%", "200%", 1.2, "100%", "+=700"); // laptop
                 },
                 "(min-width: 1440px)": () => {
-                    initPin("bottom 100%", "500%", 1.3, "100%"); // desktop
+                    initPin("bottom 100%", "500%", 1.2, "100%", "+=1000"); // desktop
                 },
             });
         };
@@ -79,12 +79,12 @@ const Art = () => {
             handle();
         }
 
-        function initPin(startValue: string, maskSize: string, scale: number, height: string) {
+        function initPin(startValue: string, maskSize: string, scale: number, height: string, endValue: string) {
             const maskTimeline = gsap.timeline({
                 scrollTrigger: {
                     trigger: "#art-mask-section",
                     start: startValue,
-                    end: "+=1000",
+                    end: endValue,
                     scrub: 1.5,
                     pin: "#art",
                     // markers: true,
@@ -193,12 +193,12 @@ const Art = () => {
     // }, []);
 
     return (
-        <div id="art" className='relative flex flex-col items-center min-h-dvh radial-gradient sm:mt-0 !mt-4 sm:px-0 !px-6' style={{
+        <div id="art" className='relative flex flex-col items-center min-h-dvh w-full radial-gradient sm:mt-0 !mt-4 sm:px-0 !px-6' style={{
             background: 'radial-gradient(50% 50% at 50% 50%, #202020 0%, #000000 100%)'
         }}>
             <h1
                 id='art-title'
-                className='text-center 2xl:text-[300px] xl:text-[250px] text-[100px] tracking-tight will-change-transform will-fade'
+                className='text-center 2xl:text-[300px] xl:text-[250px] text-[80px] tracking-tight will-change-transform will-fade'
             >
                 The ART
             </h1>
@@ -230,7 +230,7 @@ const Art = () => {
                     <h2 className='sm:text-6xl text-4xl font-negra font-bold will-fade text-white md:bottom-26'>Sip-Worthy Perfection</h2>
                     <div className='flex flex-col relative bottom-0 sm:absolute gap-4 fade-content opacity-0 items-center justify-center'>
                         <h2 className='text-5xl font-negra font-bold text-white text-center sm:text-start'>Made with Craft - Poured with Passion</h2>
-                        <p className='text-sm font-light text-white'>This is not a drink. It is a carefully crafted moment made just for you</p>
+                        <p className='text-sm font-light text-white sm:text-start text-center'>This is not a drink. It is a carefully crafted moment made just for you</p>
                     </div>
                 </div>
 

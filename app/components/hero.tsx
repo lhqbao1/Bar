@@ -118,7 +118,7 @@ const Hero = () => {
             ScrollTrigger.matchMedia({
                 // Mobile
                 "(max-width: 767px)": () => {
-                    createScrollTrigger("+=350", "top 30%");
+                    createScrollTrigger("+=350", "top 50%");
                 },
                 // Laptop
                 "(min-width: 768px) and (max-width: 1439px)": () => {
@@ -203,7 +203,7 @@ const Hero = () => {
             <div id="hero" className='relative overflow-hidden flex justify-center sm:px-30 px-2 z-10 min-h-dvh w-full border border-transparent'>
                 <BackGroundNoise size='xl' />
                 <div className='z-10 w-full'>
-                    <h1 id="hero-title" className='font-negra text-[118px] uppercase tracking-wide text-center sm:text-[300px] text-white'>
+                    <h1 id="hero-title" className='font-negra text-[110px] uppercase tracking-wide text-center sm:text-[300px] text-white'>
                         Mojito
                     </h1>
                     <Image

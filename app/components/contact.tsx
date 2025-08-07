@@ -52,14 +52,14 @@ const Contact = () => {
     }, []);
 
     return (
-        <div id='footer' className='px-30 py-10 relative min-h-screen w-full'>
+        <div id='footer' className='xl:px-30 md:px-20 sm:px-10 px-6 sm:py-10 py-0 mt-10 sm:mt-0 relative min-h-screen w-full'>
             <BackGroundNoise size='xl' />
             <Image
                 src="/images/footer-left-leaf.png"
                 alt=""
                 height={325}
                 width={325}
-                className='absolute left-0 bottom-0 object-cover w-[200px]'
+                className='absolute left-0 bottom-0 object-cover w-[200px] hidden sm:block'
                 id="left-leaf-footer"
             />
             <Image
@@ -67,20 +67,13 @@ const Contact = () => {
                 alt=""
                 height={325}
                 width={325}
-                className='absolute right-0 top-0 w-[200px] object-cover'
+                className='absolute right-0 top-0 w-[200px] object-cover hidden sm:block'
                 id="right-leaf-footer"
             />
-            <Image
-                src="/images/footer-drinks.png"
-                alt=""
-                height={325}
-                width={325}
-                className='absolute right-0 bottom-0 object-cover'
-                id="footer-drinks"
-            />
+
 
             <div className='flex flex-col gap-14 items-center z-10 text-white'>
-                <h1 className='font-negra text-6xl'>Where to Find Us</h1>
+                <h1 className='font-negra xl:text-6xl text-5xl'>Where to Find Us</h1>
                 <div className='footer-address flex flex-col gap-5 text-center'>
                     <p className='uppercase text-sm font-medium'>Visit our store</p>
                     <p className='text-2xl font-light'>456, Raq Blvd. #404, Los Angeles, CA 90210</p>
@@ -106,6 +99,14 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
+            <Image
+                src="/images/footer-drinks.png"
+                alt=""
+                height={325}
+                width={325}
+                className='sm:absolute relative right-0 bottom-0 object-cover'
+                id="footer-drinks"
+            />
         </div>
     )
 }
